@@ -286,17 +286,35 @@ header {
   width: 100%;
   display: flex;
   cursor: pointer;
+  margin: 5px 0px;
 }
 .skills img {
   width: 70px;
   height: 70px;
   border: 1px solid var(--first-color);
 }
-marquee{
+marquee {
   display: flex;
+}
+.left__div {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
+
+.right__div {
+  position: absolute;
+  top: 15%;
+  right: 10%;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
+@media screen and (max-width: 1067px) {
+  .skills {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 767px) {
   .profile__img {
     width: 70px;
