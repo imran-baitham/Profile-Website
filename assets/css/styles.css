@@ -285,7 +285,6 @@ header {
 .skills {
   width: 100%;
   display: flex;
-  cursor: pointer;
   margin: 5px 0px;
 }
 .skills img {
@@ -307,9 +306,18 @@ marquee {
   top: 15%;
   right: 10%;
 }
+.liner{
+  border: 1px solid var(--text-color-dark);
+  padding-top: 10px;
+  transform: translateY(70px);
+
+}
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 1067px) {
+  #footer {
+    display: none;
+  }
   .skills {
     display: none;
   }
