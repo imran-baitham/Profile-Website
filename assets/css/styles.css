@@ -12,21 +12,19 @@
         Blue: hsl(207, 90%, 72%)
         Pink: hsl(356, 66%, 75%)
         Teal: hsl(174, 63%, 62%)
+        hsl(var(--hue), 100%, 99%)
   */
-  --first-hue: 250;
-  --sat: 66%;
-  --lig: 75%;
-  --second-hue: 219;
+  --first-hue: 207;
+  --sat: 90%;
+  --lig: 61%;
+  --second-hue: 355;
   --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
-  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
-  --title-color: hsl(var(--second-hue), 15%, 95%);
-  --text-color: hsl(var(--second-hue), 8%, 75%);
-  --text-color-light: hsl(var(--second-hue), 4%, 55%);
-  --body-color: hsl(var(--second-hue), 48%, 8%);
-  --container-color: hsl(var(--second-hue), 32%, 12%);
+  --text-color: hsl(var(--second-hue), 255%, 255%);
+  --body-color: rgb(0, 0, 0);
+  --container-color: rgb(34, 34, 34);
+  --text-color-dark: hsl(var(--second-hue), 4%, 85%);
 
   /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
   --biggest-font-size: 35px;
   --h1-font-size: 1.5rem;
@@ -42,9 +40,7 @@
   --font-semibold: 600;
 
   /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
-  --z-modal: 1000;
+  --z-modal: 3;
 }
 
 /* Responsive typography */
@@ -111,14 +107,21 @@ img {
   height: auto;
 }
 
-/*=============== THEME ===============*/
-
 /*========== Variables Dark theme ==========*/
-
+body.light-theme {
+  --text-color: rgb(0, 0, 0);
+  --body-color: hsl(var(--second-hue), 100%, 99%);
+  --text-color-dark: hsl(var(--second-hue), 8%, 35%);
+  --container-color: hsla(var(--second-hue), 48%, 8%, 0.1);
+}
 /*========== 
     Color changes in some parts of 
     the website, in light theme
 ==========*/
+
+/* .light-theme .scrool__header {
+  box-shadow: 0 2px 4px hsla(0, 1%, 1%, 0.1);
+} */
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -137,7 +140,7 @@ img {
 }
 
 .section {
-  padding: 2.5rem 0 1rem;
+  padding: 1.5rem 0 1rem;
 }
 
 .section__title,
@@ -163,19 +166,10 @@ header {
   top: 0%;
   left: 0%;
   background-color: var(--body-color);
-  z-index: var(--z-fixed);
   transition: 0.4s; /* for light mode animation */
-  box-shadow: none;
 }
 .nav {
   margin: 10px 10px;
-}
-.profile__img {
-  width: 55px;
-  border-radius: 60px;
-}
-.profile__head {
-  font-size: var(--small-font-size);
 }
 
 /*=============== THEME ===============*/
@@ -189,6 +183,7 @@ header {
   border-radius: 30px;
   font-weight: var(--font-medium);
   fill: currentColor;
+  color: var(--text-color-dark);
 }
 
 .change-theme:hover {
@@ -216,8 +211,16 @@ header {
   padding: 11px 20px;
   width: 100%;
   border-radius: 15px;
-  background-color: rgb(53, 51, 51);
+  background-color: var(--container-color);
   margin-bottom: 16px;
+}
+@keyframes imran {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 .profile_text {
   width: 100%;
@@ -231,9 +234,64 @@ header {
   font-size: var(--biggest-font-size);
   transform: translateX(-15px);
   border-radius: 50px;
-
+  color: var(--text-color-dark);
 }
 
+.profile__data {
+  display: grid;
+  text-align: center;
+}
+
+.profile__perfil {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(
+    180deg,
+    hsla(var(--first-hue), var(--sat), var(--lig), 1) 0%,
+    hsla(var(--first-hue), var(--sat), var(--lig), 0.2) 100%
+  );
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile__perfil img {
+  width: 75px;
+}
+
+.profile__border {
+  border: 3.5px solid var(--first-color);
+  justify-self: center;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.profile__name {
+  font-size: var(--smaller-font-size);
+}
+
+/* ============== FOOTER ==================== */
+#footer {
+  /* background-color: red; */
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.skills {
+  width: 100%;
+  /* background-color: aqua; */
+}
+.skills img {
+  width: 70px;
+  height: 70px;
+  border: 1px solid var(--first-color);
+}
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (min-width: 767px) {
@@ -245,5 +303,26 @@ header {
   }
   .profile_link {
     padding: 16px 20px;
+  }
+  /*  */
+
+  .profile__perfil {
+    width: 85px;
+    height: 85px;
+  }
+
+  .profile__border {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile__name {
+    padding-bottom: 0.25rem;
+  }
+  .profile_link:hover {
+    animation: imran 0.2s linear;
+  }
+  #footer {
+    margin-top: 80px;
   }
 }
