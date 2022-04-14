@@ -278,19 +278,22 @@ header {
 
 /* ============== FOOTER ==================== */
 #footer {
-  /* background-color: red; */
-  margin-top: 150px;
+  margin-top: 120px;
   display: flex;
   justify-content: space-evenly;
 }
 .skills {
   width: 100%;
-  /* background-color: aqua; */
+  display: flex;
+  cursor: pointer;
 }
 .skills img {
   width: 70px;
   height: 70px;
   border: 1px solid var(--first-color);
+}
+marquee{
+  display: flex;
 }
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
@@ -323,6 +326,6 @@ header {
     animation: imran 0.2s linear;
   }
   #footer {
-    margin-top: 80px;
+    margin-top: 50px;
   }
 }
